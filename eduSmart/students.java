@@ -1,62 +1,54 @@
 package eduSmart;
 
 public class students extends User implements ProgressTrackable{
-	private String enrolledcourse1;
-	private String enrolledcourse2;
+	private  String enrolledCourse1;
+	private  String enrolledCourse2;
+	private int enrolledCourseCount = 0;
 
-	public students() {
-		super("Hari","Hari@gmail.com","ID1");
-
-
-
-		// TODO Auto-generated constructor stub
+	public students(String name,String email,int userId) {
+		super(name, email, userId);
+		this.enrolledCourse1=null;
+		this.enrolledCourse2=null;
 	}
-	public void enrolledcourse(String coursename) {
-		coursename="Manualtesting";
-
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		User object1 = new students();
-		ProgressTrackable object2 = new students();
-		object1.displayWelcome();
-		object1.viewprofile();
-		object2.trackprogress();
-	}
-
 	@Override
-	void viewprofile() {
-		System.out.println("Hari,Hari@gmail.com,ID1");
-		// TODO Auto-generated method stub
-
+	public void viewProfile() {
+		System.out.println(super.getName()+" "+super.getEmail()+" "+super.getUserId());
+		System.out.println();
 	}
 
 
-	public String getEnrolledcourse1() {
-		if(enrolledcourse1== "Manualtesting")
-		{System.out.println("Manualtesting");
+	void enrollCourse(String courseName) {
+		if(enrolledCourseCount< 2) {
+			if(this.enrolledCourse1 == null) {
+				this.enrolledCourse1=courseName;
+				enrolledCourseCount++;
+			}
+			else if(this.enrolledCourse2 == null) {
+				this.enrolledCourse2 =courseName;
+				enrolledCourseCount++;
+			}	
 		}
-		return enrolledcourse1;
-	}
+		else {
+			System.out.println("Sorry! Maximum enrollement count reached, we cannot enroll further");
+		}
 
-
-
-	public void setEnrolledcourse1(String enrolledcourse1) {
-		this.enrolledcourse1 = enrolledcourse1;
-	}
-
-
-	public void setEnrolledcourse2(String enrolledcourse2) {
-		this.enrolledcourse2 = enrolledcourse2;
-	}
-	public String getEnrolledcourse2() {
-		return enrolledcourse2;
 	}
 	@Override
-	public void trackprogress() {
-		// TODO Auto-generated method stub
-		System.out.println("student1 enrolled course"+getEnrolledcourse1()+getEnrolledcourse2());
+	public void trackProgress() {
+		// TODO Auto-generated method stub	
+		System.out.println("Progress made so far for " +enrolledCourse1+ " is 75%");
+	}
+	public String getEnrolledCourse1() {
+		return enrolledCourse1;
+	}
+	public void setEnrolledCourse1(String enrolledCourse1) {
+		this.enrolledCourse1 = enrolledCourse1;
+	}
+	public String getEnrolledCourse2() {
+		return enrolledCourse2;
+	}
+	public void setEnrolledCourse2(String enrolledCourse2) {
+		this.enrolledCourse2 = enrolledCourse2;
 	}
 
 }

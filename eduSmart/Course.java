@@ -1,28 +1,34 @@
 package eduSmart;
+class Course{
+	private  String title;
+	private  int durationInHours;
+	final int maxStudents;
 
-public class Course {
-	static String title= "Softwaretesting";
-	int durationinhours= 3;
-	int maxstudents =25;
-	public Course(String acceptstitle, int duration, int maximunstudents) {
-		title =acceptstitle;
-		durationinhours= duration;
-		maxstudents= maximunstudents;
+	public Course(String title,int durationInHours,int maxStudents){
+		this.maxStudents = 0;
+		this.title=title;
+		this.durationInHours=durationInHours;
 	}
-	public Course(String acceptsonlytitle) {
-		title =acceptsonlytitle;
-
+	public Course(String title) {
+		this.title=title;
+		this.durationInHours=0;
+		this.maxStudents=0;
 	}
-	public void showCoursedetails() {
-
-		System.out.println(title+ " course for freshers");
-
-		// TODO Auto-generated constructor stub
+	public void showCourseDetails() {
+		System.out.println("Title: "+title);
+		System.out.println("Duration in hours: "+durationInHours);
+		System.out.println("Max students: "+maxStudents);
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Course object1 = new Course(title);
-
-
-		object1.showCoursedetails();
-	}}
+	public int getDurationInHours() {
+		return durationInHours;
+	}
+	public void setDurationInHours(int durationInHours) {
+		this.durationInHours = durationInHours;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+}
